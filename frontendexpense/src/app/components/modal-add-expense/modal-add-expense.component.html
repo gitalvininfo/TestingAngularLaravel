@@ -1,0 +1,41 @@
+<form [formGroup]="addExpenseForm">
+    <div class="example-container">
+        <h4>{{panelTitle}}</h4>
+        <mat-form-field appearance="outline">
+            <mat-label>Title</mat-label>
+            <input [(ngModel)]="expense.title" matInput placeholder="Enter Title" formControlName="title">
+            <div *ngIf="isSubmitted && f.title.errors">
+                <mat-error *ngIf="f.title.errors.required">Title is required</mat-error>
+            </div>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline">
+            <mat-label>Category</mat-label>
+            <input [(ngModel)]="expense.category" matInput placeholder="Enter Category" formControlName="category">
+            <div *ngIf="isSubmitted && f.category.errors">
+                <mat-error *ngIf="f.category.errors.required">Category is required</mat-error>
+            </div>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Description</mat-label>
+            <input [(ngModel)]="expense.description" matInput placeholder="Enter Description" formControlName="description">
+            <div *ngIf="isSubmitted && f.description.errors">
+                <mat-error *ngIf="f.description.errors.required">Description is required</mat-error>
+            </div>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Price</mat-label>
+            <input [(ngModel)]="expense.price" matInput placeholder="Enter Price" formControlName="price">
+            <div *ngIf="isSubmitted && f.price.errors">
+                <mat-error *ngIf="f.price.errors.required">Price is required</mat-error>
+            </div>
+        </mat-form-field>
+    </div>
+    <div fxLayoutAlign="end" fxLayoutGap="10px">
+        <button mat-raised-button (click)="onNoClick()" color="warn">Cancel</button>
+        <button mat-raised-button color="accent" (click)="storeExpense()">{{buttonTitle}}</button>
+    </div>
+</form>

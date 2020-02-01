@@ -1,0 +1,34 @@
+<div class="">
+    <h1 class="display-4">Hello, User!</h1>
+    <p class="lead">This is an expense tracker system which helps and guides you to track your daily expenses.</p>
+    <hr class="my-4">
+</div>
+
+<button mat-raised-button color="accent" (click)="addExpenseDialog()">Add Expense</button> <br> <br>
+<table *ngIf="!loading" class="table table-dark">
+    <thead>
+        <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Category</th>
+            <th scope="col">Price</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let expense of expense_list;">
+            <td>{{expense.title}}</td>
+            <td>{{expense.description}}</td>
+            <td>{{expense.category}}</td>
+            <td>{{expense.price}}</td>
+            <td>
+                <button mat-raised-button color="primary" (click)="updateExpense(expense)">Edit</button>
+                <button mat-raised-button color="warn" (click)="deleteExpense(expense)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div *ngIf="loading" fxLayoutAlign="center center">
+    <mat-spinner color="accent"></mat-spinner>
+</div>
